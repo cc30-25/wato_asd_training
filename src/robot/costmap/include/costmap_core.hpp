@@ -7,10 +7,10 @@
 
 namespace robot
 {
-class CostmapProcessor {
+class CostmapCore {
 public:
     // Constructor accepting logger for terminal output
-    explicit CostmapProcessor(const rclcpp::Logger& logger);
+    explicit CostmapCore(const rclcpp::Logger& logger);
 
     // Initialize the costmap with configuration parameters
     void configureCostmap(
