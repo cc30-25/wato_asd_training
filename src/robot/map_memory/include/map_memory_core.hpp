@@ -1,5 +1,5 @@
-#ifndef MAP_MEMORY_HANDLER_HPP_
-#define MAP_MEMORY_HANDLER_HPP_
+#ifndef MAP_MEMORY_CORE_HPP_
+#define MAP_MEMORY_CORE_HPP_
 
 #include "rclcpp/rclcpp.hpp"
 #include "nav_msgs/msg/occupancy_grid.hpp"
@@ -34,4 +34,4 @@ class MapMemoryCore {
 };
 }  
 
-#endif  // MAP_MEMORY_HANDLER_HPP_
+#endif  // MAP_MEMORY_core_HPP_
