@@ -21,7 +21,7 @@ public:
         // Publisher to '/costmap' topic
         costmap_publisher_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("/costmap", 10);
 
-        // Initialize costmap parameters
+        // Initialize 
         resolution_ = 0.1; // 0.1 meters per cell
         width_ = 100;     // 10 meters wide
         height_ = 100;    // 10 meters tall
@@ -36,7 +36,7 @@ public:
 private:
     void initializeCostmap()
     {
-        costmap_.resize(width_ * height_, 0); // Initialize all cells to 0 (free space)
+        costmap_.resize(width_ * height_, 0); // Initialize all cells to 0 
     }
 
     void convertToGrid(double range, double angle, int &x_grid, int &y_grid)
