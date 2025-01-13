@@ -106,7 +106,7 @@ else
 fi
 
 # override to use arm64 images
-if [ "$PLATFORM" = "arm64" ]; then
+if [ "$PLATFORM" = "amd64" ]; then
     echo "BASE_IMAGE_OVERRIDE=ghcr.io/watonomous/robot_base/base:humble-arm64" >> "$MODULES_DIR/.env"
 else
     echo "BASE_IMAGE_OVERRIDE=ghcr.io/watonomous/robot_base/base:humble-ubuntu22.04" >> "$MODULES_DIR/.env"
