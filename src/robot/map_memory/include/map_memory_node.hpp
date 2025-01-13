@@ -10,7 +10,7 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 
-#include "map_memory_handler.hpp"
+#include "map_memory_core.hpp"
 
 class MemoryMapNode : public rclcpp::Node {
  public:
@@ -27,7 +27,7 @@ class MemoryMapNode : public rclcpp::Node {
 
  private:
     // Core processing unit for global map updates
-    robot_system::MapMemoryHandler memory_handler_;
+    robot_system::MapMemoryCore memory_core_;
     
     // ROS2 communication interfaces
     rclcpp::Subscription<nav_msgs::msg::OccupancyGrid>::SharedPtr local_map_subscriber_;
