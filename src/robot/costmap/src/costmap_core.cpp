@@ -65,13 +65,13 @@ void CostmapCore::applyInflation(int origin_x, int origin_y) const {
         int nx = x + dx;
         int ny = y + dy;
         
-        // Ensure the neighbor cell is within bounds
+       
         if (nx >= 0 && nx < static_cast<int>(costmap_ptr_->info.width) &&
             ny >= 0 && ny < static_cast<int>(costmap_ptr_->info.height) &&
             !visited[nx][ny]) {
-          // Calculate the distance to the original obstacle
+         
           double dist = std::hypot(nx - origin_x, ny - origin_y) * costmap_ptr_->info.resolution;
-          // If within inflation radius, mark as inflated and add to BFS queue
+          // mark as inflated and add to BFS 
           if (dist <= inflation_radius_) {
             int index = ny * costmap_ptr_->info.width + nx;
             if (costmap_ptr_->data[index] < (1 - (dist / inflation_radius_)) * 100) {
