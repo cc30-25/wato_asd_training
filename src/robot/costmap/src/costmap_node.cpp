@@ -3,7 +3,7 @@
 #include <memory>
 
 CostmapNode::CostmapNode() : Node("costmap_node"), costmap_core_(robot::CostmapCore(this->get_logger())) {
-  // Load configuration parameters
+ 
   loadParameters();
   laser_scan_subscription_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
     laserscan_topic_, 10, 
@@ -35,7 +35,7 @@ void CostmapNode::loadParameters() {
   this->declare_parameter<double>("costmap.origin.orientation.w", 1.0);
   this->declare_parameter<double>("costmap.inflation_radius", 1.0);
   
-  // Retrieve parameters from ROS2 server and store them locally
+  
   laserscan_topic_ = this->get_parameter("laserscan_topic").as_string();
   costmap_topic_ = this->get_parameter("costmap_topic").as_string();
   map_resolution_ = this->get_parameter("costmap.resolution").as_double();
@@ -48,10 +48,10 @@ void CostmapNode::loadParameters() {
 }
 
 void CostmapNode::laserScanCallback(const sensor_msgs::msg::LaserScan::SharedPtr laser_msg) const {
-  // Update the costmap based on the received laser scan
+  
   costmap_core_.processLaserScan(laser_msg);
   
-  // Publish the updated costmap message
+ 
   nav_msgs::msg::OccupancyGrid costmap_message = *costmap_core_.retrieveCostmap();
   costmap_message.header = laser_msg->header;
   costmap_publisher_->publish(costmap_message);
