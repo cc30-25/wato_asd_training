@@ -20,7 +20,7 @@ void CostmapCore::initializeMap(double map_resolution, int map_width, int map_he
 }
 
 void CostmapCore::processLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr laser_msg) const {
-  // Reset all cells to free space
+
   std::fill(costmap_ptr_->data.begin(), costmap_ptr_->data.end(), 0);
   double angle = laser_msg->angle_min;
   
@@ -28,7 +28,7 @@ void CostmapCore::processLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr 
     double range = laser_msg->ranges[i];
     // Check if the range value is valid
     if (range >= laser_msg->range_min && range <= laser_msg->range_max) {
-      // Calculate the position of the obstacle in map coordinates
+    
       double x = range * std::cos(angle);
       double y = range * std::sin(angle);
       // Convert to grid coordinates
@@ -37,10 +37,10 @@ void CostmapCore::processLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr 
       
       if (grid_x >= 0 && grid_x < static_cast<int>(costmap_ptr_->info.width) &&
           grid_y >= 0 && grid_y < static_cast<int>(costmap_ptr_->info.height)) {
-        // Mark the cell as occupied
+        
         int index = grid_y * costmap_ptr_->info.width + grid_x;
-        costmap_ptr_->data[index] = 100;  // 100 indicates an occupied cell
-        // Inflate around the obstacle
+        costmap_ptr_->data[index] = 100;  
+       
         applyInflation(grid_x, grid_y);
       }
     }
@@ -48,7 +48,7 @@ void CostmapCore::processLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr 
 }
 
 void CostmapCore::applyInflation(int origin_x, int origin_y) const {
-  // Use breadth-first search (BFS) to mark cells within the inflation radius
+  // Use BFS
   std::queue<std::pair<int, int>> bfs_queue;
   bfs_queue.emplace(origin_x, origin_y);
   std::vector<std::vector<bool>> visited(costmap_ptr_->info.width, std::vector<bool>(costmap_ptr_->info.height, false));
@@ -58,7 +58,7 @@ void CostmapCore::applyInflation(int origin_x, int origin_y) const {
     auto [x, y] = bfs_queue.front();
     bfs_queue.pop();
     
-    // Iterate over neighboring cells
+   
     for (int dx = -1; dx <= 1; ++dx) {
       for (int dy = -1; dy <= 1; ++dy) {
         if (dx == 0 && dy == 0) continue;  // Skip the center cell
@@ -90,4 +90,4 @@ nav_msgs::msg::OccupancyGrid::SharedPtr CostmapCore::retrieveCostmap() const {
   return costmap_ptr_;
 }
 
-}  // namespace robot
+}  
