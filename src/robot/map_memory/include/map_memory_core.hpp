@@ -22,6 +22,8 @@ class MapMemoryCore {
         double x_position, double y_position, double orientation
     );
 
+    bool convertToMapIndex(double wx, double wy, int &mx, int &my) const;
+
     bool convertToMapCoordinates(
         double robot_x, double robot_y, int& map_x, int& map_y
     ) const;
@@ -34,4 +36,4 @@ class MapMemoryCore {
 };
 }  
 
-#endif  // MAP_MEMORY_core_HPP_
+#endif  

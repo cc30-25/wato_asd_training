@@ -1,4 +1,18 @@
 #include "planner_node.hpp"
+#include <chrono>
+#include <cmath>
+#include <mutex>
+
+// PlannerNode::PlannerNode() : Node("planner"), planner_(robot::PlannerCore(this->get_logger())) {}
+// PlannerNode::PlannerNode()
+//     : Node("planner"),
+//       planner_(robot::PlannerCore(this->get_logger())) {
+//     initializeParameters();
+//     setupSubscribers();
+//     setupPublishers();
+//     setupTimer();
+//     planner_.initialize(smoothing_factor_, iterations_);
+// }
 
 PlannerNode::PlannerNode()
     : Node("planner"),
@@ -9,6 +23,7 @@ PlannerNode::PlannerNode()
     setupTimer();
     planner_.initialize(smoothing_factor_, iterations_);
 }
+
 
 void PlannerNode::initializeParameters() {
     this->declare_parameter<std::string>("map_topic", "/map");
