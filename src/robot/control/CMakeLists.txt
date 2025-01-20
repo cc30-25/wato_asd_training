@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(control)
 
-# Set compiler to use C++ 17 standard
+
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
@@ -16,6 +16,7 @@ find_package(rclcpp REQUIRED)      # ROS2 C++ package
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(tf2 REQUIRED)
+
 # Compiles source files into a library
 # A library is not executed, instead other executables can link
 # against it to access defined methods and classes.
@@ -50,5 +51,3 @@ install(TARGETS
 install(DIRECTORY
   config
   DESTINATION share/${PROJECT_NAME})
-
-ament_package()
