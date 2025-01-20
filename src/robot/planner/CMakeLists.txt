@@ -39,3 +39,20 @@ install(DIRECTORY
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
+
+# Define the library or executable target
+add_library(planner_lib
+  src/planner.cpp
+)
+
+# Add include directories
+target_include_directories(planner_lib
+  PUBLIC
+    include
+)
+
+# Specify dependencies
+ament_target_dependencies(planner_lib
+  rclcpp
+  some_other_dependency  # Replace with actual dependencies
+)
