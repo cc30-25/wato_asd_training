@@ -16,6 +16,7 @@ find_package(rclcpp REQUIRED)      # ROS2 C++ package
 find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(tf2 REQUIRED)  
+
 # Compiles source files into a library
 # A library is not executed, instead other executables can link
 # against it to access defined methods and classes.
