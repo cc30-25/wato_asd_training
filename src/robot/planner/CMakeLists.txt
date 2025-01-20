@@ -13,9 +13,13 @@ endif()
 # Search for dependencies required for building this package
 find_package(ament_cmake REQUIRED) # ROS2 build tool
 find_package(rclcpp REQUIRED)      # ROS2 C++ package
+find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)      # ROS2 C++ package
 find_package(geometry_msgs REQUIRED)      # ROS2 C++ package
 
+
+
+<depend>sensor_msgs</depend>
 # Compiles source files into a library
 # A library is not executed, instead other executables can link
 target_include_directories(planner_lib
@@ -52,7 +56,7 @@ target_include_directories(planner_lib
 )
 
 # Specify dependencies
-ament_target_dependencies(planner_lib
+ament_dependencies(planner_lib
   rclcpp
   some_other_dependency  # Replace with actual dependencies
 )
